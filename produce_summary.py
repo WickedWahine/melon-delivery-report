@@ -1,43 +1,37 @@
-print("Day 1")
-the_file = open("um-deliveries-20140519.txt")
-for line in the_file:
-    line = line.rstrip()
-    words = line.split('|')
+def melon_delivery_report():
+    '''Create a report of melons delivered'''
 
-    melon = words[0]
-    count = words[0]
-    amount = words[0]
+    #The 3 log files where data is stored
+    files = ("um-deliveries-20140519.txt","um-deliveries-20140519.txt","um-deliveries-20140519.txt")
 
-    print("Delivered {} {}s for total of ${}".format(
-        count, melon, amount))
-the_file.close()
+    #For every file index
+    for i in range(len(files)):
 
+        #Print Day number as header 
+        print(f"\n\nDay {i+1}\n---------")
+        
+        #Open file for the day
+        the_file = open(files[i])
 
-print("Day 2")
-the_file = open("um-deliveries-20140520.txt")
-for line in the_file:
-    line = line.rstrip()
-    words = line.split('|')
+        #Read file, line by line
+        for line in the_file:
+            
+            #Strip any extra whitespace at end of line
+            line = line.rstrip()
 
-    melon = words[0]
-    count = words[0]
-    amount = words[0]
+            #Split lines based on delimiter
+            words = line.split('|')
 
-    print("Delivered {} {}s for total of ${}".format(
-        count, melon, amount))
-the_file.close()
+            #Capture line components into melon, count, amount
+            melon = words[0]
+            count = int(words[1])
+            amount = count * float(words[2])
 
+            #Print report
+            print(f"Delivered {count} {melon}s for total of ${amount}")
 
-print("Day 3")
-the_file = open("um-deliveries-20140521.txt")
-for line in the_file:
-    line = line.rstrip()
-    words = line.split('|')
+        #Close file
+        the_file.close()
 
-    melon = words[0]
-    count = words[0]
-    amount = words[0]
-
-    print("Delivered {} {}s for total of ${}".format(
-        count, melon, amount))
-the_file.close()
+#Call above function
+melon_delivery_report()
