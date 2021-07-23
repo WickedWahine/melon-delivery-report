@@ -28,7 +28,7 @@ def melon_delivery_report():
             amount = count * float(words[2])
 
             #Print report
-            print(f"Delivered {count} {melon}s for total of ${amount}")
+            print(f"Delivered {count:5} {melon}s for total of ${amount:.2f}")
 
         #Close file
         the_file.close()
